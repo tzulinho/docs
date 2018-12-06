@@ -1,0 +1,65 @@
+Installing Homestead on Mac
+
+1. Install VirtualBox
+
+Download Link: https://www.virtualbox.org/wiki/Downloads
+
+VirtualBox 5.2.22 platform packages
+ - OS X hosts
+VirtualBox 5.2.22 Oracle VM VirtualBox Extension Pack
+ - All supported platforms
+
+
+2. Install Vagrant
+
+Download Link: https://www.vagrantup.com/downloads.html
+
+Platform
+ - MAC OS
+
+Confirm
+
+$ vagrant -v
+Vagrant 2.2.2
+
+3. Download Homestead config
+
+$ vagrant box add laravel/homestead
+ - Choose virtualbox
+
+Lastest version:
+$ git clone https://github.com/laravel/homestead.git Homestead
+or
+PHP 7.0
+$ git clone https://github.com/laravel/homestead.git Homestead -b v3.1.0
+
+$ cd Homestead
+$ bash init.sh
+ - auto create Homestead.yaml in ~/.homestead
+$ vim ~/.homestead/Homestead.yaml
+ PHP 7.0
+ Add these line in the head of file
+ - box: laravel/homestead
+ - version: 0.6.0
+ - name: homestead-php7.0
+ 
+ folders:
+    - map: ~/Code
+      to: /home/vagrant/Code
+
+ sites:
+    - map: homestead.test
+      to: /home/vagrant/Code/Laravel/public
+
+$ mkdir ~/Code
+
+4. Modify hosts file
+$ sudo vim /etc/hosts
+ - add this line: 192.168.10.10 homestead.test
+ 
+ 5. Startup Homestead
+ $ cd Homestead
+ $ vagrant up
+ 
+ 6. SSH login vagrant
+ $ vagrant ssh
