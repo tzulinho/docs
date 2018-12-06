@@ -57,9 +57,17 @@ $ mkdir ~/Code
 $ sudo vim /etc/hosts
  - add this line: 192.168.10.10 homestead.test
  
- 5. Startup Homestead
- $ cd Homestead
- $ vagrant up
- 
- 6. SSH login vagrant
- $ vagrant ssh
+5. Startup Homestead
+$ cd Homestead
+$ vagrant up
+
+6. SSH login vagrant
+$ vagrant ssh
+
+7. Install Laravel
+$ vagrant ssh
+$ cd ~/Code
+$ composer create-project laravel/laravel Laravel --prefer-dist
+
+8. Open browser
+ - type http://homestead.test
